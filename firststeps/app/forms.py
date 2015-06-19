@@ -1,5 +1,7 @@
-from django import forms
+from django.forms import *
 
-class userform(forms.Form):
-	name = forms.CharField(max_length = 25)
+class userform(Form):
+	name = CharField(max_length = 25)
+	email = EmailField(max_length = 25)
+	ip = GenericIPAddressField(max_length = 20)
 	

@@ -10,10 +10,12 @@ def process_form(request):
 		form = userform(request.POST)
 		if form.is_valid() == True:
 			name = form.cleaned_data.get('name')
-			p = firstdb(name)
+			email = form.cleaned_data.get('email')
+			ip = form.cleaned_data.get('ip')
+			p = firstdb(name,email,ip)
 			p.save()
-			return render(request, 'user_submit.html', {'name':p.name})
-		return HttpResponse("Invalid submission")
+			return render(request, 'user_submit.html', {'name':name,'email':email,'ip':ip})
+		return HttpResponse("Invalid submission. Check one or more fields.")
 	elif request.method == 'GET':
 		form = userform()
 		return render(request, 'user_form.html', {'form':form})

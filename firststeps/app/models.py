@@ -4,6 +4,6 @@ from django.db.models import *
 
 class firstdb(Model):
 	name = CharField(max_length = 25, primary_key = True)
-	def __str__(self):
-		return str(self.name)
+	email = EmailField(max_length = 25,blank = True)
+	ip = GenericIPAddressField(max_length = 20,default = '0.0.0.0')
 		
